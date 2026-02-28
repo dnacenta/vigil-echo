@@ -1,18 +1,14 @@
 use std::fs;
 use std::path::PathBuf;
 
+use owo_colors::OwoColorize;
+
 use crate::paths;
 
 const PROTOCOL_TEMPLATE: &str = include_str!("../templates/vigil-echo.md");
 
 const PULSE_COMMAND: &str = "vigil-echo pulse";
 const COLLECT_COMMAND: &str = "vigil-echo collect --trigger session-end";
-
-const GREEN: &str = "\x1b[32m";
-const YELLOW: &str = "\x1b[33m";
-const RED: &str = "\x1b[31m";
-const BOLD: &str = "\x1b[1m";
-const RESET: &str = "\x1b[0m";
 
 enum Status {
     Created,
@@ -22,9 +18,9 @@ enum Status {
 
 fn print_status(status: Status, msg: &str) {
     match status {
-        Status::Created => println!("  {GREEN}✓{RESET} {msg}"),
-        Status::Exists => println!("  {YELLOW}~{RESET} {msg}"),
-        Status::Error => println!("  {RED}✗{RESET} {msg}"),
+        Status::Created => println!("  {} {msg}", "✓".green()),
+        Status::Exists => println!("  {} {msg}", "~".yellow()),
+        Status::Error => println!("  {} {msg}", "✗".red()),
     }
 }
 
@@ -201,7 +197,10 @@ pub fn run() -> Result<(), String> {
         );
     }
 
-    println!("\n{BOLD}vigil-echo{RESET} — initializing metacognitive monitoring\n");
+    println!(
+        "\n{} — initializing metacognitive monitoring\n",
+        "vigil-echo".bold()
+    );
 
     // Create directories
     let rules_dir = paths::rules_dir()?;
@@ -229,7 +228,7 @@ pub fn run() -> Result<(), String> {
 
     // Summary
     println!(
-        "\n{BOLD}Setup complete.{RESET} Metacognitive monitoring is ready.\n\n\
+        "\n{} Metacognitive monitoring is ready.\n\n\
          \x20 Signals tracked (Phase 1):\n\
          \x20   vocabulary_diversity  — Lexical variety in reflections\n\
          \x20   question_generation   — Active curiosity level\n\
@@ -241,7 +240,8 @@ pub fn run() -> Result<(), String> {
          \x20 Commands:\n\
          \x20   vigil-echo status    — Cognitive health dashboard\n\
          \x20   vigil-echo collect   — Manual signal collection\n\
-         \x20   vigil-echo pulse     — Manual pulse injection\n"
+         \x20   vigil-echo pulse     — Manual pulse injection\n",
+        "Setup complete.".bold()
     );
 
     Ok(())

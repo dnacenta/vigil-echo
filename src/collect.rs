@@ -1,9 +1,8 @@
 use std::collections::HashMap;
 
-use crate::{analyze, parser, paths, signals, state};
+use owo_colors::OwoColorize;
 
-const GREEN: &str = "\x1b[32m";
-const RESET: &str = "\x1b[0m";
+use crate::{analyze, parser, paths, signals, state};
 
 pub fn run(trigger: &str) -> Result<(), String> {
     let reflections_content = parser::read_or_empty(&paths::reflections_file()?);
@@ -55,7 +54,7 @@ pub fn run(trigger: &str) -> Result<(), String> {
     state::save_analysis(&analysis)?;
 
     // Print summary
-    println!("{GREEN}✓{RESET} Collected signal vector ({trigger})");
+    println!("{} Collected signal vector ({trigger})", "✓".green());
     print_signal("  vocabulary_diversity", sigs.vocabulary_diversity);
     print_signal("  question_generation", sigs.question_generation);
     print_signal("  thought_lifecycle", sigs.thought_lifecycle);
