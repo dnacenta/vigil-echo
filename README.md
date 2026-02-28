@@ -1,5 +1,6 @@
 # vigil-echo
 
+[![CI](https://github.com/dnacenta/vigil-echo/actions/workflows/ci.yml/badge.svg?branch=development)](https://github.com/dnacenta/vigil-echo/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/github/license/dnacenta/vigil-echo)](LICENSE)
 [![Version](https://img.shields.io/github/v/tag/dnacenta/vigil-echo?label=version&color=green)](https://github.com/dnacenta/vigil-echo/tags)
 [![crates.io](https://img.shields.io/crates/v/vigil-echo)](https://crates.io/crates/vigil-echo)
