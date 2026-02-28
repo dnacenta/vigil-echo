@@ -605,6 +605,7 @@
       <div class="hero-badges">
         <a href="https://github.com/dnacenta/vigil-echo/blob/master/LICENSE" target="_blank" rel="noopener"><img src="https://img.shields.io/github/license/dnacenta/vigil-echo" alt="License"></a>
         <a href="https://github.com/dnacenta/vigil-echo/tags" target="_blank" rel="noopener"><img src="https://img.shields.io/github/v/tag/dnacenta/vigil-echo?label=version&amp;color=green" alt="Version"></a>
+        <a href="https://crates.io/crates/vigil-echo" target="_blank" rel="noopener"><img src="https://img.shields.io/crates/v/vigil-echo" alt="crates.io"></a>
       </div>
       <p class="desc">
         Metacognitive monitoring for AI self-evolution. Measures external behavioral signals
@@ -749,16 +750,17 @@
       <p class="section-label">Quick start</p>
       <h2 class="section-title">Up and running in minutes</h2>
       <p class="section-desc">
-        Clone, build, initialize. vigil-echo reads your agent's reflective documents and starts tracking cognitive health immediately.
+        Install, initialize, collect. One command to install, one to start tracking.
       </p>
       <div class="quickstart-steps">
         <div class="qs-step">
           <div class="qs-num">1</div>
           <div class="qs-content">
-            <p class="qs-label">Clone and build</p>
-            <div class="code-block"><span class="cmd">git clone https://github.com/dnacenta/vigil-echo.git</span>
-<span class="cmd">cd vigil-echo</span>
-<span class="cmd">cargo install</span> <span class="flag">--path .</span></div>
+            <p class="qs-label">Install</p>
+            <div class="code-block"><span class="cmd">cargo install vigil-echo</span>
+<span class="comment"># or build from source:</span>
+<span class="cmd">git clone https://github.com/dnacenta/vigil-echo.git</span>
+<span class="cmd">cd vigil-echo && cargo install</span> <span class="flag">--path .</span></div>
           </div>
         </div>
         <div class="qs-step">

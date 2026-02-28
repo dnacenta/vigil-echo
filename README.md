@@ -1,7 +1,10 @@
 # vigil-echo
 
+[![CI](https://github.com/dnacenta/vigil-echo/actions/workflows/ci.yml/badge.svg?branch=development)](https://github.com/dnacenta/vigil-echo/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/github/license/dnacenta/vigil-echo)](LICENSE)
 [![Version](https://img.shields.io/github/v/tag/dnacenta/vigil-echo?label=version&color=green)](https://github.com/dnacenta/vigil-echo/tags)
+[![crates.io](https://img.shields.io/crates/v/vigil-echo)](https://crates.io/crates/vigil-echo)
+[![Rust](https://img.shields.io/badge/rust-1.80%2B-orange)](https://rustup.rs/)
 
 Metacognitive monitoring for AI self-evolution. Answers the question: **is the agent actually growing, or just going through the motions?**
 
@@ -94,22 +97,18 @@ For each signal with 3+ data points:
 
 ## Installation
 
+### From crates.io (recommended)
+
+```bash
+cargo install vigil-echo
+```
+
 ### From source
 
 ```bash
 git clone https://github.com/dnacenta/vigil-echo.git
 cd vigil-echo
 cargo install --path .
-vigil-echo init
-```
-
-### Manual build
-
-```bash
-git clone https://github.com/dnacenta/vigil-echo.git
-cd vigil-echo
-cargo build --release
-./target/release/vigil-echo init
 ```
 
 ## Commands
