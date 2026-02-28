@@ -6,9 +6,11 @@ mod paths;
 mod pulse;
 mod signals;
 mod state;
+mod stats;
 mod status;
 
 use clap::{Parser, Subcommand};
+use owo_colors::OwoColorize;
 
 #[derive(Parser)]
 #[command(
@@ -40,7 +42,11 @@ enum Commands {
     /// Inject cognitive health assessment at session start
     Pulse,
     /// Cognitive health dashboard
-    Status,
+    Status {
+        /// Output in JSON format
+        #[arg(long)]
+        json: bool,
+    },
 }
 
 fn main() {
@@ -56,14 +62,14 @@ fn main() {
                     c
                 }
                 Err(e) => {
-                    eprintln!("\x1b[31m✗\x1b[0m {e}");
+                    eprintln!("{} {e}", "✗".red());
                     std::process::exit(1);
                 }
             };
             let history = match state::load_signals() {
                 Ok(h) => h,
                 Err(e) => {
-                    eprintln!("\x1b[31m✗\x1b[0m {e}");
+                    eprintln!("{} {e}", "✗".red());
                     std::process::exit(1);
                 }
             };
@@ -77,11 +83,11 @@ fn main() {
             }
         }
         Some(Commands::Pulse) => pulse::run(),
-        Some(Commands::Status) => status::run(),
+        Some(Commands::Status { json }) => status::run(json),
     };
 
     if let Err(e) = result {
-        eprintln!("\x1b[31m✗\x1b[0m {e}");
+        eprintln!("{} {e}", "✗".red());
         std::process::exit(1);
     }
 }

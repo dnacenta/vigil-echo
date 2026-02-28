@@ -1,3 +1,5 @@
+use owo_colors::OwoColorize;
+
 use crate::state::{self, AlertLevel, Trend};
 
 pub fn run() -> Result<(), String> {
@@ -31,10 +33,10 @@ pub fn run() -> Result<(), String> {
 
     // Format output
     let level_str = match &analysis.alert_level {
-        AlertLevel::Healthy => "\x1b[32mHEALTHY\x1b[0m",
-        AlertLevel::Watch => "\x1b[33mWATCH\x1b[0m",
-        AlertLevel::Concern => "\x1b[31mCONCERN\x1b[0m",
-        AlertLevel::Alert => "\x1b[1;31mALERT\x1b[0m",
+        AlertLevel::Healthy => format!("{}", "HEALTHY".green()),
+        AlertLevel::Watch => format!("{}", "WATCH".yellow()),
+        AlertLevel::Concern => format!("{}", "CONCERN".red()),
+        AlertLevel::Alert => format!("{}", "ALERT".red().bold()),
     };
 
     println!("[VIGIL — Cognitive Health]\n");
@@ -56,9 +58,9 @@ pub fn run() -> Result<(), String> {
         println!();
         for (name, trend) in &analysis.signals {
             let arrow = match trend.trend {
-                Trend::Improving => "\x1b[32m↑\x1b[0m",
-                Trend::Stable => "→",
-                Trend::Declining => "\x1b[31m↓\x1b[0m",
+                Trend::Improving => format!("{}", "↑".green()),
+                Trend::Stable => "→".to_string(),
+                Trend::Declining => format!("{}", "↓".red()),
             };
             let val = trend
                 .current
